@@ -1,6 +1,10 @@
 package com.api.WSCarSales.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Brand {
@@ -11,6 +15,18 @@ public class Brand {
 
     @Column(nullable = false, unique=true)
     private String nome_marca;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "marca")
+    private List<Model> models = new ArrayList<>();
+
+    public List<Model> getModels() {
+        return models;
+    }
+
+    public void setModels(List<Model> models) {
+        this.models = models;
+    }
 
     public Integer getId() {
         return id;

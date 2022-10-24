@@ -4,7 +4,7 @@ import javax.validation.constraints.NotBlank;
 
 public class BrandDto {
 
-    @NotBlank
+    @NotBlank(message= "nome_marca field is required")
     private String nome_marca;
 
     public String getNome_marca() {

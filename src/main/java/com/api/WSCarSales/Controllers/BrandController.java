@@ -34,26 +34,19 @@ public class BrandController {
     }
     @GetMapping("/{id}")
     public ResponseEntity<Object> getBrandById(@PathVariable Integer id){
-        Optional<Brand> brandOptional = brandService.getBrandById(id);
-        if(!brandOptional.isPresent())return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Brand not found");
-        return ResponseEntity.status(HttpStatus.OK).body(brandOptional.get());
+        Brand brand = brandService.getBrandById(id);
+        return ResponseEntity.status(HttpStatus.OK).body(brand);
     }
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteBrand(@PathVariable Integer id){
-        Optional<Brand> brandOptional = brandService.getBrandById(id);
-        if(!brandOptional.isPresent())return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Brand not found");
+        Brand brand = brandService.getBrandById(id);
         brandService.deleteBrand(id);
         return ResponseEntity.status(HttpStatus.OK).body("Brand deleted");
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Object> deleteBrand(@PathVariable Integer id, @RequestBody @Valid BrandDto brandDto){
-        Optional<Brand> brandOptional = brandService.getBrandById(id);
-        if(!brandOptional.isPresent())return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Brand not found");
-        Brand brand = new Brand();
-        BeanUtils.copyProperties(brandDto,brand);
-        brand.setId(brandOptional.get().getId());
-        return ResponseEntity.status(HttpStatus.OK).body(brandService.saveBrand(brand));
+    public ResponseEntity<Object> updateBrand(@PathVariable Integer id, @RequestBody @Valid BrandDto brandDto){
+        return ResponseEntity.status(HttpStatus.OK).body(brandService.updateBrand(id,brandDto));
     }}
 
 
