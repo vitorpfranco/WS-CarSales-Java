@@ -15,6 +15,8 @@ public class CarDto {
     @NotNull(message= "modelo_id field is required")
     private Integer modelo_id;
 
+    @Max(value = 2023,message = "ano must be above 2023")
+    @Min(value = 1900,message = "ano must be above 1900")
     @NotNull(message= "ano field is required")
     private  Integer ano;
 
