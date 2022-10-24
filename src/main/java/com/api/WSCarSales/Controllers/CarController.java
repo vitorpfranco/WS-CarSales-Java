@@ -1,6 +1,7 @@
 package com.api.WSCarSales.Controllers;
 
 import com.api.WSCarSales.Dtos.CarDto;
+import com.api.WSCarSales.Enums.FuelType;
 import com.api.WSCarSales.Models.Car;
 import com.api.WSCarSales.Services.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,7 @@ public class CarController {
     public ResponseEntity<Car> saveCar(@RequestBody @Valid CarDto carDto){
         Car car = carService.setModel(carDto);
         car.setTimestamp_cadastro(Instant.now().getEpochSecond());
+        car.setCombustivel(FuelType.toEnum(carDto.getCombustivel()));
         return ResponseEntity.status(HttpStatus.CREATED).body(carService.saveCar(car));
     }
 

@@ -5,7 +5,6 @@ import com.api.WSCarSales.Exeptions.ResourceNotFoundException;
 import com.api.WSCarSales.Models.Brand;
 import com.api.WSCarSales.Models.Model;
 import com.api.WSCarSales.Repositories.ModelRepository;
-import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

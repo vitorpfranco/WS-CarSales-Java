@@ -1,5 +1,7 @@
 package com.api.WSCarSales.Models;
 
+import com.api.WSCarSales.Enums.FuelType;
+
 import javax.persistence.*;
 
 @Entity
@@ -17,8 +19,9 @@ public class Car {
     @Column(nullable = false)
     private  Integer ano;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private String combustivel;
+    private FuelType combustivel;
 
     @Column(nullable = false)
     private String num_portas;
@@ -58,11 +61,11 @@ public class Car {
         this.ano = ano;
     }
 
-    public String getCombustivel() {
+    public FuelType getCombustivel() {
         return combustivel;
     }
 
-    public void setCombustivel(String combustivel) {
+    public void setCombustivel(FuelType combustivel) {
         this.combustivel = combustivel;
     }
 

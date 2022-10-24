@@ -25,7 +25,7 @@ public class CarService {
     public Car setModel(CarDto carDto) {
         Model model= modelService.getModelById(carDto.getModelo_id());
         var car = new Car();
-        BeanUtils.copyProperties(carDto,car,"modelo_id");
+        BeanUtils.copyProperties(carDto,car,"modelo_id","combustivel");
         car.setModelo(model);
      return car;
     }

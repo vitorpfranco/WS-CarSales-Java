@@ -2,9 +2,10 @@ package com.api.WSCarSales.Dtos;
 
 
 import com.api.WSCarSales.Models.Car;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -17,10 +18,12 @@ public class CarDto {
     @NotNull(message= "ano field is required")
     private  Integer ano;
 
-    @NotBlank(message= "combustivel field is required")
+    @NotNull(message= "combustivel field is required")
     private String combustivel;
 
     @NotBlank(message= "num_portas field is required")
+    @Max(value = 5,message = "num_portas can have the maximum value of 5.")
+    @Min(value = 2,message = "num_portas can have the maximum value of 2.")
     private String num_portas;
 
     @NotBlank(message= "cor field is required")
@@ -43,7 +46,7 @@ public class CarDto {
         this.marca_nome= car.getModelo().getMarca().getNome_marca();
         this.nome_modelo=car.getModelo().getNome();
         this.ano=car.getAno();
-        this.combustivel = car.getCombustivel();
+        this.combustivel = car.getCombustivel().getFuelType();
         this.num_portas = car.getNum_portas();
         this.valor_fipe = car.getModelo().getValor_fipe();
         this.cor= car.getCor();
