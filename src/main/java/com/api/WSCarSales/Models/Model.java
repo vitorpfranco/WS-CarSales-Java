@@ -19,12 +19,12 @@ public class Model {
     @Column(nullable = false)
     private Double valor_fipe;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "marca_id", referencedColumnName = "id")
     private Brand marca;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "modelo")
+    @OneToMany(mappedBy = "modelo", cascade = CascadeType.ALL)
     private List<Car> cars = new ArrayList<>();
 
     public List<Car> getCars() {

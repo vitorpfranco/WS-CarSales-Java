@@ -13,14 +13,14 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping("model")
+@RequestMapping("models")
 public class ModelController {
 
     @Autowired
     ModelService modelService;
 
     @PostMapping
-    public ResponseEntity<Object> saveModel(@RequestBody @Valid ModelDto modelDto){
+    public ResponseEntity<Model> saveModel(@RequestBody @Valid ModelDto modelDto){
         Model model= modelService.setBrand(modelDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(modelService.saveModel(model));
 }
@@ -34,14 +34,14 @@ public class ModelController {
         return ResponseEntity.status(HttpStatus.OK).body(modelService.getModelById(id));
     }
     @DeleteMapping("/{id}")
-    public ResponseEntity<Object> deleteModel(@PathVariable Integer id){
+    public ResponseEntity<String> deleteModel(@PathVariable Integer id){
         Model model = modelService.getModelById(id);
         modelService.deleteModel(id);
         return ResponseEntity.status(HttpStatus.OK).body("Model deleted");
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Object> updateModel(@PathVariable Integer id, @RequestBody @Valid ModelDto modelDto){
+    public ResponseEntity<Model> updateModel(@PathVariable Integer id, @RequestBody @Valid ModelDto modelDto){
         Model model= modelService.setBrand(modelDto);
         return ResponseEntity.status(HttpStatus.OK).body(modelService.updateModel(id,model));
 

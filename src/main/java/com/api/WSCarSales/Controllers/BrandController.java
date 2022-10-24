@@ -15,14 +15,14 @@ import java.util.Optional;
 
 @CrossOrigin
 @RestController
-@RequestMapping("brand")
+@RequestMapping("brands")
 public class BrandController {
 
     @Autowired
     BrandService brandService;
 
     @PostMapping
-    public ResponseEntity<Object> saveBrand(@RequestBody @Valid BrandDto brandDto){
+    public ResponseEntity<Brand> saveBrand(@RequestBody @Valid BrandDto brandDto){
         var brand= new Brand();
         BeanUtils.copyProperties(brandDto,brand);
         return ResponseEntity.status(HttpStatus.CREATED).body(brandService.saveBrand(brand));
@@ -33,19 +33,19 @@ public class BrandController {
         return ResponseEntity.status(HttpStatus.OK).body(brandService.getBrands());
     }
     @GetMapping("/{id}")
-    public ResponseEntity<Object> getBrandById(@PathVariable Integer id){
+    public ResponseEntity<Brand> getBrandById(@PathVariable Integer id){
         Brand brand = brandService.getBrandById(id);
         return ResponseEntity.status(HttpStatus.OK).body(brand);
     }
     @DeleteMapping("/{id}")
-    public ResponseEntity<Object> deleteBrand(@PathVariable Integer id){
+    public ResponseEntity<String> deleteBrand(@PathVariable Integer id){
         Brand brand = brandService.getBrandById(id);
         brandService.deleteBrand(id);
         return ResponseEntity.status(HttpStatus.OK).body("Brand deleted");
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Object> updateBrand(@PathVariable Integer id, @RequestBody @Valid BrandDto brandDto){
+    public ResponseEntity<Brand> updateBrand(@PathVariable Integer id, @RequestBody @Valid BrandDto brandDto){
         return ResponseEntity.status(HttpStatus.OK).body(brandService.updateBrand(id,brandDto));
     }}
 

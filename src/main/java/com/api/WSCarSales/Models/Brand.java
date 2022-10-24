@@ -17,7 +17,7 @@ public class Brand {
     private String nome_marca;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "marca")
+    @OneToMany(mappedBy = "marca", cascade = CascadeType.ALL)
     private List<Model> models = new ArrayList<>();
 
     public List<Model> getModels() {
