@@ -23,10 +23,10 @@ public class CarDto {
     @NotNull(message= "combustivel field is required")
     private String combustivel;
 
-    @NotBlank(message= "num_portas field is required")
+    @NotNull(message= "num_portas field is required")
     @Max(value = 5,message = "num_portas can have the maximum value of 5.")
     @Min(value = 2,message = "num_portas can have the maximum value of 2.")
-    private String num_portas;
+    private Integer num_portas;
 
     @NotBlank(message= "cor field is required")
     private String cor;
@@ -78,11 +78,11 @@ public class CarDto {
         this.combustivel = combustivel;
     }
 
-    public String getNum_portas() {
+    public Integer getNum_portas() {
         return num_portas;
     }
 
-    public void setNum_portas(String num_portas) {
+    public void setNum_portas(Integer num_portas) {
         this.num_portas = num_portas;
     }
 

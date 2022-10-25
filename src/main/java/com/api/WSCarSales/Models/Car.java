@@ -24,7 +24,7 @@ public class Car {
     private FuelType combustivel;
 
     @Column(nullable = false)
-    private String num_portas;
+    private Integer num_portas;
 
     @Column(nullable = false)
     private String cor;
@@ -69,11 +69,11 @@ public class Car {
         this.combustivel = combustivel;
     }
 
-    public String getNum_portas() {
+    public Integer getNum_portas() {
         return num_portas;
     }
 
-    public void setNum_portas(String num_portas) {
+    public void setNum_portas(Integer num_portas) {
         this.num_portas = num_portas;
     }
 
