@@ -3,9 +3,12 @@ package com.api.WSCarSales.Models;
 import com.api.WSCarSales.Enums.FuelType;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-public class Car {
+public class Car implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
